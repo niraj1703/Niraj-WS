@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>queue in javascript</title>
+    <script>
+      let queue = [];
+      let currentSize = queue.length;
+      let maxSize;
+      //function enqueue(newVal) {
+      //  if (currentSize >= maxSize) {
+      //    alert("queue is already full");
+      //  } else {
+      //    queue[currentSize] = newVal;
+      //    currentSize++;
+      //  }
+      //}
+      function enqueue() {
+        let newVal = document.getElementById('qEl').value;
+        if (currentSize >= maxSize) {
+          alert("queue is already full");
+        } else {
+         queue[currentSize] = newVal;
+          currentSize++;
+        }
+      }
+      function dequeue() {
+        if (currentSize > 0) {
+          for (let i = 0; i < queue.length; i++) {
+            queue[i] = queue[i + 1];
+          }
+          currentSize--;
+          queue.length = currentSize;
+        } else {
+          alert("queue is already empty");
+        }
+      }
+      function front() {
+        if (currentSize > 0) {
+          console.log(queue[0]);
+        } else {
+          alert("queue is already empty");
+        }
+      }
+      function rear() {
+        if (currentSize > 0) {
+          console.log(queue);
+        } else {
+          alert("queue is already empty");
+        }
+      }
+
+      function display() {
+        console.log(queue);
+      }
+
+      //enqueue(15);
+      //enqueue(16);
+      //enqueue(17);
+      //enqueue(18);
+      //enqueue(19);
+
+      //dequeue(17);
+      //display();
+      //front();
+      //rear();
+      //dequeue(18);
+      //display();
+      //front();
+      //rear();
+      //dequeue(19);
+      //display();
+    </script>
+  </head>
+  <body>
+    <h1>queue with input </h1>
+    <input placeholder="enter element" id="pEl"/>
+    <button onclick="enqueue">add element</button>
+    <br/><br/>
+    <button onclick="dequeue">remove element</button>
+    <button onclick="display"> display</button>
+    <button onclick="front">get front element</button>
+    <button onclick="rear">get rear element</button>
+  </body>
+</html>
